@@ -1,0 +1,13 @@
+<?php
+$_db=new mysqli("localhost","username","password","database");
+
+function _norm($s){
+    global $_db;
+    return $_db->real_escape_string($s);
+}
+
+function _isdatevalid($date){
+	$date = explode('-', $date);
+	if(count($date)<2)return false;
+	return checkdate($date[1], isset($date[2])?$date[2]:1, $date[0]);
+}
