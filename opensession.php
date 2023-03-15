@@ -28,8 +28,9 @@ $query = sprintf("
 	where S.id = '%s'
 		and S.id_quiz = '%s'
 		and Q.id = '%s'
-	", _norm($id_session), _norm($id_quiz), _norm($id_question),
+	", _norm($id_session) , _norm($id_quiz), _norm($id_question),
 );
+var_dump($query);
 $hasil = $_db -> query($query);
 if(!$hasil)exit('-');
 

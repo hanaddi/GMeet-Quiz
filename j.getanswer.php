@@ -28,17 +28,15 @@ $query = sprintf("
 	and A.`id_session` = '%s'
 	and A.`id_quiz` = '%s'
 	and A.`id_question` = '%s'
-	order by A.`answered_at` asc
+	order by A.`answered_at` asc, A.`id` asc
 	", _norm($id_session), _norm($id_quiz), _norm($id_question),
 );
 $hasil = $_db -> query($query);
 if(!$hasil)no_result();
 
-$i=0;
+// $i=0;
 while($row=mysqli_fetch_array($hasil,1)){
 	$data[] = $row;
-	$i++;
+	// $i++;
 }
-
-
 exit(json_encode($data));
