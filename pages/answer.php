@@ -62,6 +62,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 		// window.resizeTo(840,480);
 		// window.resizeTo(840,560);
 		var options 	= <?php echo json_encode($options); ?>;
+		var choices 	= <?php echo json_encode(array_values($choices)); ?>;
 		var id_quiz 	= <?php echo $id_quiz; ?>;
 		var id_question = <?php echo $id_question; ?>;
 		var id_session  = <?php echo $id_session; ?>;
@@ -99,12 +100,12 @@ while($row=mysqli_fetch_array($hasil,1)){
 					}
 				}
 				if(options != null && is_session_open){
-					window.setTimeout(refreshData, 1000)
+					// window.setTimeout(refreshData, 1000)
 				}
 			})
 			.catch(error	=> {
 				if(options != null && is_session_open){
-					window.setTimeout(refreshData, 1000)
+					// window.setTimeout(refreshData, 1000)
 				}
 			});
 		}
@@ -115,14 +116,25 @@ while($row=mysqli_fetch_array($hasil,1)){
 				for(let el_option of el_options){
 					el_option.style.order = el_option.dataset['label'].charCodeAt();
 				}
-				if(!is_session_open){
-					for(let el of el_options){
-						el.querySelector('.l').outerHTML = '';
-					}
-				}
+				// if(!is_session_open){
+				// 	for(let el of el_options){
+				// 		el.querySelector('.l').outerHTML = '';
+				// 	}
+				// }
 			}
-			refreshData();
-
+			choices.filter(el=>el.is_correct).map(el=>{
+				let c = document.querySelector('.option[data-id="'+el.id+'"] .text')
+				if(c){
+					// c.style.transitionDelay = '1s'
+					c.style.transitionDuration = '0.5s'
+					c.style.backgroundColor = '#00FF00'
+				}
+			})
+			fetch('../j.closesession.php?id_session='+id_session)
+				.then(e=>{
+					try{document.querySelector('.modal').style.display="none"}catch(e){}
+					refreshData();
+				})
 		};
 	</script>
 </head>
@@ -138,7 +150,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 			<?php
 				if(!is_null($options)){
 					foreach ($options as $option) {
-						echo "<div class=\"option\" data-label=\"{$option['label']}\"><div class=\"text\"><div class=\"l\">{$option['label']}</div>{$option['desc']}</div><div data-choice=\"{$option['id_choice']}\" class=\"people\"></div></div>";
+						echo "<div class=\"option\" data-id=\"{$option['id_choice']}\" data-label=\"{$option['label']}\"><div class=\"text\"><div class=\"l\">{$option['label']}</div>{$option['desc']}</div><div data-choice=\"{$option['id_choice']}\" class=\"people\"></div></div>";
 					}
 				}else{
 					foreach ($choices as $choice) {
@@ -151,9 +163,13 @@ while($row=mysqli_fetch_array($hasil,1)){
 
 	<div class="footer">
 		<!-- <button>ddd</button> -->
-		<!-- <button>ddd</button> -->
-		<!-- <button>ddd</button> -->
-		<button onclick="window.location='answer.php'+window.location.search">&#x21E8; Next</button>
+		<button id="b_next" style="display:none;">&#x21E8; Next</button>
 	</div>
+
+	<script>
+		btnNext(id_question);
+	</script>
+
+	<div class="modal"></div>
 </body>
 </html>

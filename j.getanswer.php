@@ -28,7 +28,7 @@ $query = sprintf("
 	and A.`id_session` = '%s'
 	and A.`id_quiz` = '%s'
 	and A.`id_question` = '%s'
-	order by A.`answered_at` asc, A.`id` asc
+	order by A.`answered_at` desc, A.`id` asc
 	", _norm($id_session), _norm($id_quiz), _norm($id_question),
 );
 $hasil = $_db -> query($query);

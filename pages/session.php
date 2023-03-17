@@ -96,10 +96,25 @@ echo "<th>options</th>";
 echo "<th>action</th>";
 echo "</tr>";
 
+$q_order = [];
+$q_previd = -1;
 foreach($questions as $question){
+	$q_order[$question['id_question']] = [
+		'no' => $question['sort'],
+	];
+	if(isset($q_order[$q_previd])){
+		$q_order[$q_previd]					['next'] = $question['id_question'];
+		$q_order[$question['id_question']]	['prev'] = $q_previd;
+	}
+	$q_previd = $question['id_question'];
 
-	echo "<tr>";
-	echo "<td>{$question['id_question']}</td>";
+
+	if($session['is_open'] && $question['id_question'] == $session['id_question']){
+		echo "<tr style=\"background-color:lime\">";
+	}else{
+		echo "<tr>";
+	}
+	echo "<td>{$question['sort']}</td>";
 	echo "<td>{$question['id_question']}</td>";
 	echo "<td>{$question['question']}</td>";
 
@@ -112,18 +127,19 @@ foreach($questions as $question){
 	echo "<td>";
 	echo "<button onclick=\"openQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">open</button> ";
 	echo "<button onclick=\"focusQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">[] focus</button> ";
+	echo "<button onclick=\"focusQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']}, Math.random())\">[] force focus</button> ";
 	echo "</td>";
 
 	echo "</tr>";
 }
 echo "</table>";
 
-
 ?>
 <script>
 
 const pageBaseURL='http://localhost:8880/gmeetchat/pages/';
 const ls_slide = "gmeet_chat_slide";
+const ls_questions = "gmeet_chat_questions";
 
 function openQuestion(sid, kid, qid){
 	fetch('../opensession.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid)
@@ -135,8 +151,8 @@ function closeSession(sid){
 	.then(e=>window.location=window.location)
 }
 
-function focusQuestion(sid,kid,qid){
-	setSlide('question.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid);
+function focusQuestion(sid,kid,qid,seed=0){
+	setSlide('question.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid+'&random='+seed);
 }
 
 function setSlide(file='question.php'){
@@ -145,4 +161,5 @@ function setSlide(file='question.php'){
 	window.location=window.location;
 }
 
+window.localStorage.setItem(ls_questions, JSON.stringify(<?php echo json_encode($q_order);?>));
 </script>
