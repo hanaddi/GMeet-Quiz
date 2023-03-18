@@ -72,7 +72,34 @@ button{
 	margin: 2px 5px;
 }
 
+table.standings{
+	border-collapse: collapse;
+}
+table.standings td{
+	padding: 5px;
+	border: solid 2px olive;
+}
+table.standings td .ans{
+	padding: 3px;
+	min-width: 20px;
+	text-align: center;
+	border-radius: 10px;
+}
+table.standings td .ans.ansXl{
+	background-color: red;
+	color: white;
+}
+table.standings td .ans.ansOl{
+	background-color: lime;
+}
+table.standings td .ans.ans-l{
+	background-color: #aaa;
+}
 
+
+.footerprep{
+	height: 50px;
+}
 .footer{
 	position: fixed;
 	z-index: 10;

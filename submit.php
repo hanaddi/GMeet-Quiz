@@ -17,6 +17,7 @@ $query = sprintf("INSERT INTO `chat_log` (`label`,`ref`, `time`, `name`, `conten
 $hasil = $_db -> query($query);
 if(!$hasil){
 	// failed
+	exit($_db->error);
 	exit("can't save");
 }
 

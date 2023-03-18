@@ -17,10 +17,11 @@ $query = sprintf("
 		on C.`id_question` = Q.`id`
 	left join `session` as S
 		on S.`id_question` = Q.`id`
+		and S.`id` = '%s'
 		and S.`id_quiz` = Q.`id_quiz`
 	where Q.`id` = '%s'
 	and Q.`id_quiz` = '%s'
-	", _norm($id_question), _norm($id_quiz),
+	", _norm($id_session), _norm($id_question), _norm($id_quiz),
 );
 $hasil    = $_db -> query($query);
 $question = null;
@@ -31,6 +32,7 @@ $choices  = [];
 
 // $i=0;
 while($row=mysqli_fetch_array($hasil,1)){
+	// var_dump($row);
 	if(is_null($question)){
 		$question = $row['question'];
 		$question_number = $row['sort'];

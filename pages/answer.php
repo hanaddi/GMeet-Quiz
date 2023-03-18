@@ -162,8 +162,8 @@ while($row=mysqli_fetch_array($hasil,1)){
 	</div>
 
 	<div class="footer">
-		<!-- <button>ddd</button> -->
-		<button id="b_next" style="display:none;">&#x21E8; Next</button>
+		<button onclick="window.location='table.php'+window.location.search">&#x1f3c6; Standings</button>
+		<button id="b_next" style="display:none;">&#x21E8; Next Question</button>
 	</div>
 
 	<script>
