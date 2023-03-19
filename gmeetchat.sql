@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 19, 2023 at 01:36 PM
+-- Generation Time: Mar 19, 2023 at 09:39 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -97,7 +97,29 @@ INSERT INTO `answer` (`id`, `id_session`, `id_quiz`, `id_question`, `person`, `i
 (116, 6, 3, 3, 'Anda 8', 16, 'X', 0, 1679229213),
 (117, 6, 3, 3, 'Anda 27', 14, 'X', 0, 1679229213),
 (118, 6, 3, 3, 'Anda 11', 15, 'X', 0, 1679229213),
-(119, 6, 3, 3, 'Anda 10', 13, 'O', 3, 1679229214);
+(119, 6, 3, 3, 'Anda 10', 13, 'O', 3, 1679229214),
+(120, 6, 3, 5, 'Anda 20', 24, 'X', 0, 1679234308),
+(121, 6, 3, 5, 'Anda 11', 22, 'O', 3, 1679234278),
+(122, 6, 3, 5, 'Anda 2', 21, 'X', 0, 1679234275),
+(123, 6, 3, 5, 'Anda 1', 22, 'O', 3, 1679234277),
+(124, 6, 3, 5, 'Anda 6', 21, 'X', 0, 1679234297),
+(126, 6, 3, 5, 'Anda 4', 21, 'X', 0, 1679234281),
+(128, 6, 3, 5, 'Anda 18', 21, 'X', 0, 1679234300),
+(130, 6, 3, 5, 'Anda 27', 23, 'X', 0, 1679234306),
+(131, 6, 3, 5, 'Anda 16', 23, 'X', 0, 1679234300),
+(132, 6, 3, 5, 'Anda 19', 24, 'X', 0, 1679234276),
+(134, 6, 3, 5, 'Anda 17', 23, 'X', 0, 1679234281),
+(137, 6, 3, 5, 'Anda 24', 24, 'X', 0, 1679234281),
+(138, 6, 3, 5, 'Anda 8', 21, 'X', 0, 1679234277),
+(139, 6, 3, 5, 'Anda 29', 24, 'X', 0, 1679234278),
+(140, 6, 3, 5, 'Anda 10', 21, 'X', 0, 1679234278),
+(144, 6, 3, 5, 'Anda 21', 24, 'X', 0, 1679234305),
+(145, 6, 3, 5, 'Anda 9', 23, 'X', 0, 1679234307),
+(150, 6, 3, 5, 'Anda 7', 24, 'X', 0, 1679234297),
+(153, 6, 3, 5, 'Anda 15', 22, 'O', 3, 1679234299),
+(157, 6, 3, 5, 'Anda 5', 21, 'X', 0, 1679234306),
+(159, 6, 3, 5, 'Anda 14', 22, 'O', 3, 1679234306),
+(161, 6, 3, 5, 'Anda 12', 21, 'X', 0, 1679234308);
 
 -- --------------------------------------------------------
 
@@ -148,7 +170,19 @@ INSERT INTO `choice` (`id`, `id_question`, `label`, `is_correct`) VALUES
 (17, 4, 'Rena', 1),
 (18, 4, 'Rina', 0),
 (19, 4, 'Lina', 0),
-(20, 4, 'Rini', 0);
+(20, 4, 'Rini', 0),
+(21, 5, 'Copy Cat', 0),
+(22, 5, 'Copy Parrot', 1),
+(23, 5, 'Word Snap', 0),
+(24, 5, 'Eye Spy', 0),
+(25, 6, 'Pre-A.2', 0),
+(26, 6, 'Pre-A.1', 1),
+(27, 6, 'A1.1', 0),
+(28, 6, 'None of the other answers are correct', 0),
+(29, 7, '52.2%', 0),
+(30, 7, '152.2%', 1),
+(31, 7, '261%', 0),
+(32, 7, '161%', 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +206,10 @@ INSERT INTO `question` (`id`, `sort`, `id_quiz`, `question`, `answer_exp`) VALUE
 (1, 1, 1, 'pilih A', ''),
 (2, 2, 1, 'no B', ''),
 (3, 1, 3, 'DoC is one of our learning platforms. What does DoC stand for?', ''),
-(4, 2, 3, '<img src=\"imgs/professor_3.png\">\nHis granddaughter will help us to rebuild a city. What is her name?', '<img src=\"imgs/prof.png\" style=\"width:100%;height:auto\">');
+(4, 2, 3, '<img src=\"imgs/professor_3.png\" style=\"float: left;\">\nHis granddaughter will help us to rebuild a city. What is her name?', '<img src=\"imgs/prof.png\" style=\"width:100%;height:auto\">'),
+(5, 3, 3, '<img src=\"imgs/cparro.png\" style=\"width:80%;height:auto;margin:auto\"><br/>\nWhat is the name of this minigame?', '<ul>\n<li>Copy Parrot<br/><img src=\"imgs/cparro.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Eye Spy<br/><img src=\"imgs/eyspy.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Word Snap<br/><img src=\"imgs/wsnap.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Copy Cat<br/><img src=\"imgs/ccat.png\" style=\"width:100%;height:auto\"></li>\n\n</ul>'),
+(6, 4, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the diagnostic score of this student?', 'Possible diagnostic scores:\r\n<ul>\r\n<li>Pre-A.1</li>\r\n<li>A1.1</li>\r\n<li>A2.1</li>\r\n<li>B1.1</li>\r\n<li>B2.1</li>\r\n<li>C1.1</li>\r\n</ul>'),
+(7, 5, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the learning improvements of this student?', 'Hard skills improvements:\r\n<ul>\r\n<li>Reading: 168%</li>\r\n<li>Vocabulary: 160%</li>\r\n<li>Grammar: 168%</li>\r\n<li>Listening: 151%</li>\r\n<li>Speaking: 114%</li>\r\n</ul>\r\n\r\nLearning improvements:<br/>\r\n<code>\r\n= AVERAGE(168%, 160%, 168%, 151%, 114%)<br/>\r\n= 152.2%\r\n</code>');
 
 -- --------------------------------------------------------
 
@@ -220,8 +257,8 @@ INSERT INTO `session` (`id`, `id_quiz`, `id_question`, `is_open`, `choices`) VAL
 (1, 1, 1, 0, '{\"D\":{\"label\":\"D\",\"desc\":\"A haha\",\"id_choice\":\"5\",\"is_correct\":\"1\"},\"A\":{\"label\":\"A\",\"desc\":\"B bebek\",\"id_choice\":\"6\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"C cius\",\"id_choice\":\"7\",\"is_correct\":\"0\"},\"C\":{\"label\":\"C\",\"desc\":\"D dih\",\"id_choice\":\"8\",\"is_correct\":\"0\"}}'),
 (3, 1, 2, 0, '{\"B\":{\"label\":\"B\",\"desc\":\"cxzc B\",\"id_choice\":\"9\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"x 324 \",\"id_choice\":\"10\",\"is_correct\":\"0\"},\"A\":{\"label\":\"A\",\"desc\":\"dsfd5 ew\",\"id_choice\":\"11\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"sdf df5 \",\"id_choice\":\"12\",\"is_correct\":\"0\"}}'),
 (5, 2, NULL, 0, ''),
-(6, 3, 4, 0, '{\"D\":{\"label\":\"D\",\"desc\":\"Rena\",\"id_choice\":\"17\",\"is_correct\":\"1\"},\"A\":{\"label\":\"A\",\"desc\":\"Rina\",\"id_choice\":\"18\",\"is_correct\":\"0\"},\"C\":{\"label\":\"C\",\"desc\":\"Lina\",\"id_choice\":\"19\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"Rini\",\"id_choice\":\"20\",\"is_correct\":\"0\"}}'),
-(7, 3, 4, 0, '{\"B\":{\"label\":\"B\",\"desc\":\"Rena\",\"id_choice\":\"17\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"Rina\",\"id_choice\":\"18\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"Lina\",\"id_choice\":\"19\",\"is_correct\":\"0\"},\"A\":{\"label\":\"A\",\"desc\":\"Rini\",\"id_choice\":\"20\",\"is_correct\":\"0\"}}');
+(6, 3, 7, 0, '{\"A\":{\"label\":\"A\",\"desc\":\"52.2%\",\"id_choice\":\"29\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"152.2%\",\"id_choice\":\"30\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"261%\",\"id_choice\":\"31\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"161%\",\"id_choice\":\"32\",\"is_correct\":\"0\"}}'),
+(7, 3, 5, 0, '{\"D\":{\"label\":\"D\",\"desc\":\"Copy Cat\",\"id_choice\":\"21\",\"is_correct\":\"0\"},\"C\":{\"label\":\"C\",\"desc\":\"Copy Parrot\",\"id_choice\":\"22\",\"is_correct\":\"1\"},\"A\":{\"label\":\"A\",\"desc\":\"Word Snap\",\"id_choice\":\"23\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"Eye Spy\",\"id_choice\":\"24\",\"is_correct\":\"0\"}}');
 
 --
 -- Indexes for dumped tables
@@ -283,7 +320,7 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT for table `chat_log`
@@ -295,13 +332,13 @@ ALTER TABLE `chat_log`
 -- AUTO_INCREMENT for table `choice`
 --
 ALTER TABLE `choice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `quiz`

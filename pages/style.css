@@ -7,7 +7,7 @@ button{
 
 .container{
 	font-family: sans-serif;
-	font-size: 120%;
+/*	font-size: 120%;*/
 	padding: auto 10px;
 }
 .container .question{
@@ -42,7 +42,7 @@ button{
 	object-position:center top;
 /*	display: block;*/
 /*	margin: auto;*/
-	float: left;
+/*	float: left;*/
 }
 
 .container .options{
@@ -65,11 +65,13 @@ button{
 	border-radius: 10px;
 	box-shadow: 0px 0px 2px #112233;
 	line-height: 1.5;
+/*	display: inline-flex;*/
+/*	width: 90%;*/
 }
 .container .options .option .l{
 	display: inline-flex;
-	padding: 10px;
-	margin: -10px 10px -10px -10px;
+	padding: 10px 10px;
+	margin: -10px 4px -10px -10px;
 	background-color: #ddf;
 	border-radius: 10px;
 /*	border-radius: 10px 0px 0px 10px;*/
