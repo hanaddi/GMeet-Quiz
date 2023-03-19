@@ -121,7 +121,8 @@ foreach($questions as $question){
 	}
 	echo "<td>{$question['sort']}</td>";
 	echo "<td>{$question['id_question']}</td>";
-	echo "<td>{$question['question']}</td>";
+	$q = strip_tags($question['question']);
+	echo "<td>{$q}</td>";
 
 	echo "<td><ul>";
 	foreach ($question['choices'] as $choice) {

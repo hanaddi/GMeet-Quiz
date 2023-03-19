@@ -27,9 +27,19 @@ $quiz = mysqli_fetch_array($hasil,1);
 	<script src="script.js"></script>
 </head>
 <body>
-	<div class="container" style="text-align:center;">
+	<div class="container" style="text-align:center;padding-top: 50px;">
 		<div class="title"><h1><?php echo $quiz['title']; ?></h1></div>
 		<?php echo $quiz['description']; ?>
+
+		<div style="margin-top: 50px;">
+			<div class="title"><b>Scoring</b></div>
+			<div style="display: flex;justify-content: center;">
+				<div style="margin:5px;padding:5px;border-radius: 4px;background-color: #7f7;">Correct:   <?php echo $quiz['score_correct']; ?></div>
+				<div style="margin:5px;padding:5px;border-radius: 4px;background-color: #f99;">Incorrect: <?php echo $quiz['score_wrong']; ?></div>
+				<div style="margin:5px;padding:5px;border-radius: 4px;background-color: #ddd;">Abstain:   <?php echo $quiz['score_abstain']; ?></div>
+			</div>
+		</div>
+
 	</div>
 
 	<div class="footer">

@@ -90,6 +90,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 						let div = document.createElement('div');
 						div.innerText = el.person;
 						el_people.appendChild(div);
+						// el_people.style.minHeight = "0";
 					});
 					if(extraPeople>0){
 						let div = document.createElement('div');
@@ -156,6 +157,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 		</div>
 	</div>
 
+	<div class="footerprep"></div>
 	<div class="footer">
 		<!-- <button>ddd</button> -->
 		<!-- <button>ddd</button> -->

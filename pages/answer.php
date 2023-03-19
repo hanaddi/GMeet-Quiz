@@ -17,10 +17,11 @@ $query = sprintf("
 		on C.`id_question` = Q.`id`
 	left join `session` as S
 		on S.`id_question` = Q.`id`
+		and S.`id` = '%s'
 		and S.`id_quiz` = Q.`id_quiz`
 	where Q.`id` = '%s'
 	and Q.`id_quiz` = '%s'
-	", _norm($id_question), _norm($id_quiz),
+	", _norm($id_session), _norm($id_question), _norm($id_quiz),
 );
 $hasil    = $_db -> query($query);
 $question = null;
@@ -93,6 +94,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 						let div = document.createElement('div');
 						div.innerText = el.person;
 						el_people.appendChild(div);
+						// el_people.style.minHeight = "0";
 					});
 					if(extraPeople>0){
 						let div = document.createElement('div');
@@ -168,12 +170,13 @@ while($row=mysqli_fetch_array($hasil,1)){
 		</div>
 
 		<!-- Explanation -->
-		<div class="question">
+		<div class="question" style="min-height:0">
 			<?php echo $answer_exp; ?>
 		</div>
 
 	</div>
 
+	<div class="footerprep"></div>
 	<div class="footer">
 		<button onclick="window.location='table.php'+window.location.search">&#x1f3c6; Standings</button>
 		<button id="b_next" style="display:none;">&#x21E8; Next Question</button>

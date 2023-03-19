@@ -8,17 +8,22 @@ button{
 .container{
 	font-family: sans-serif;
 	font-size: 120%;
-	padding: 50px 10px;
+	padding: auto 10px;
 }
 .container .question{
 	width: 80%;
-	margin: 5px auto 15px auto;
-	min-height: 70px;
+	margin: 5px auto 5px auto;
+	min-height: 170px;
 	background-color: #fff;
 	padding: 10px;
 	line-height: 1.5;
 	border-radius: 10px;
 	box-shadow: 0px 0px 2px #112233;
+}
+.container .question::after {
+	content: "";
+	clear: both;
+	display: table;
 }
 
 .container .question .title{
@@ -28,6 +33,16 @@ button{
 	background-color: #fee;
 	border-radius: 10px 10px 0px 0px;
 	font-weight: 600;
+}
+
+.container .question img{
+	object-fit:cover;
+	width:250px;
+	height:170px;
+	object-position:center top;
+/*	display: block;*/
+/*	margin: auto;*/
+	float: left;
 }
 
 .container .options{
@@ -40,7 +55,7 @@ button{
 
 .container .options .option{
 	flex-basis: 40%;
-	margin: 10px 10px;
+	margin: 5px 10px;
 }
 .container .options .option .text{
 	flex-basis: 40%;
@@ -64,12 +79,15 @@ button{
 .container .options .option .people{
 	display: flex;
 	flex-wrap:wrap;
+	font-size: 80%;
+/*	min-height: 64px;*/
 }
 .container .options .option .people div{
 	background-color: #ddd;
 	padding: 5px;
 	border-radius: 10px;
 	margin: 2px 5px;
+	height: auto;
 }
 
 table.standings{
