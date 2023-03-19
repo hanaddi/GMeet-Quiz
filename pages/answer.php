@@ -134,10 +134,14 @@ while($row=mysqli_fetch_array($hasil,1)){
 				}
 			})
 			fetch('../j.closesession.php?id_session='+id_session)
-				.then(e=>{
-					try{document.querySelector('.modal').style.display="none"}catch(e){}
-					refreshData();
-				})
+			.then(e=>{
+				try{document.querySelector('.modal').style.display="none"}catch(e){}
+				refreshData();
+			})
+
+			f_storage.push(function(ev){
+				console.log(ev);
+			});
 		};
 	</script>
 </head>

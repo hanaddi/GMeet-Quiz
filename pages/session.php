@@ -47,6 +47,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 	echo "<td>";
 	echo "<button onclick=\"closeSession({$row['id']})\">close</button>";
 	echo "<button onclick=\"setQuestionRoute({$row['id']})\">set route</button>";
+	echo "<button onclick=\"focusIntro({$row['id']}, {$row['id_quiz']}, Math.random())\">[] force focus intro</button> ";
 	echo "</td>";
 
 	echo "</tr>";
@@ -101,7 +102,10 @@ $q_order = [];
 $q_previd = -1;
 foreach($questions as $question){
 	$q_order[$question['id_question']] = [
+		'id' => $question['id_question'],
 		'no' => $question['sort'],
+		'id_session' => $session['id'],
+		'id_quiz' => $session['id_quiz'],
 	];
 	if(isset($q_order[$q_previd])){
 		$q_order[$q_previd]					['next'] = $question['id_question'];
@@ -154,6 +158,10 @@ function closeSession(sid){
 
 function focusQuestion(sid,kid,qid,seed=0){
 	setSlide('question.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid+'&random='+seed);
+}
+
+function focusIntro(sid,kid,seed=0){
+	setSlide('intro.php?id_session='+sid+'&id_quiz='+kid+'&random='+seed);
 }
 
 function setSlide(file='question.php'){

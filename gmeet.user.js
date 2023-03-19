@@ -39,6 +39,7 @@
     }
 
     let lang = document.documentElement.lang;
+    var iframeShooter = null;
     var copyWriting = initLang(lang);
 
 	var waiting = function(){
@@ -170,6 +171,8 @@
                 //generate label
                 let a=new Date();
                 let label = `${window.location.pathname}_${(a.getMonth()+1)}_${a.getDate()}`;
+                let random = "";
+                // random = " " + (Math.random()*30|0);
 
 				window.fetch(`http://localhost:8880/gmeetchat/submit.php`,{
                     method: 'POST',
@@ -177,11 +180,32 @@
                         'Content-Type': 'application/x-www-form-urlencoded',
                         //"X-Ini-Asli": "iya"
                     },
-                    body: `label=${label}&ref=${id}&time=${nodeTitle.dataset.timestamp}&name=${encodeURIComponent(nodeTitle.dataset.senderName)}&content=${encodeURIComponent(text)}`
+                    body: `label=${label}&ref=${id}&time=${nodeTitle.dataset.timestamp}&name=${encodeURIComponent(nodeTitle.dataset.senderName+random)}&content=${encodeURIComponent(text)}`
                 });
+
+				if(text.match(/^[^a-z0-9]*([a-z])[^a-z0-9]*$/i)){
+	                eventShooter("gmeet_chat_answer", Math.random());
+				}
 			}catch(ev){}
 		}else{
 			console.log( text, index);
 		}
+	}
+
+	var eventShooter = function(key, value){
+		if(!iframeShooter){
+			iframeShooter = document.createElement('iframe');
+			iframeShooter.style.position = 'fixed';
+			iframeShooter.style.left = '110%';
+			document.body.appendChild(iframeShooter);
+		}
+
+		let searchParams = new URLSearchParams()
+		searchParams.set('r', Math.random()*999999|0)
+		searchParams.set('key', key)
+		searchParams.set('value', value)
+		let search = '?'+searchParams.toString()
+		let url = 'http://localhost:8880/gmeetchat/firelsevent.php' + search;
+		iframeShooter.src = url;
 	}
 })();

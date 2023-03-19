@@ -61,15 +61,14 @@ while($row=mysqli_fetch_array($hasil,1)){
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js"></script>
 	<script>
-		// window.resizeTo(840,480);
-		// window.resizeTo(840,560);
+
 		var options 	= <?php echo json_encode($options); ?>;
 		var id_quiz 	= <?php echo $id_quiz; ?>;
 		var id_question = <?php echo $id_question; ?>;
 		var id_session  = <?php echo $id_session; ?>;
 		var is_session_open  = <?php echo $is_session_open; ?>;
 
-		function refreshData(){
+		function refreshData(norepeat=false){
 			fetch(
 				`../j.getanswer.php?id_session=${id_session}&id_quiz=${id_quiz}&id_question=${id_question}`,
 				{ signal: AbortSignal.timeout(5000) }
@@ -100,12 +99,12 @@ while($row=mysqli_fetch_array($hasil,1)){
 						el_people.appendChild(div);
 					}
 				}
-				if(options != null && is_session_open){
-					window.setTimeout(refreshData, 1000)
+				if(options != null && is_session_open && !norepeat){
+					window.setTimeout(refreshData, 10000)
 				}
 			})
 			.catch(error	=> {
-				if(options != null && is_session_open){
+				if(options != null && is_session_open && !norepeat){
 					window.setTimeout(refreshData, 1000)
 				}
 			});
@@ -126,6 +125,12 @@ while($row=mysqli_fetch_array($hasil,1)){
 			refreshData();
 
 		};
+
+		f_storage.push(function(ev){
+			if(ev.key == "gmeet_chat_answer"){
+				refreshData(true);
+			}
+		});
 	</script>
 </head>
 <body>
