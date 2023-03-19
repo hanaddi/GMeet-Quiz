@@ -134,6 +134,8 @@ foreach($questions as $question){
 	echo "<button onclick=\"openQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">open</button> ";
 	echo "<button onclick=\"focusQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">[] focus</button> ";
 	echo "<button onclick=\"focusQuestion({$session['id']}, {$session['id_quiz']}, {$question['id_question']}, Math.random())\">[] force focus</button> ";
+	echo "<button onclick=\"focusAnswer({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">[] answer</button> ";
+	echo "<button onclick=\"focusTable({$session['id']}, {$session['id_quiz']}, {$question['id_question']})\">[] table</button> ";
 	echo "</td>";
 
 	echo "</tr>";
@@ -159,6 +161,14 @@ function closeSession(sid){
 
 function focusQuestion(sid,kid,qid,seed=0){
 	setSlide('question.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid+'&random='+seed);
+}
+
+function focusAnswer(sid,kid,qid,seed=0){
+	setSlide('answer.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid+'&random='+seed);
+}
+
+function focusTable(sid,kid,qid,seed=0){
+	setSlide('table.php?id_session='+sid+'&id_quiz='+kid+'&id_question='+qid+'&random='+seed);
 }
 
 function focusIntro(sid,kid,seed=0){
