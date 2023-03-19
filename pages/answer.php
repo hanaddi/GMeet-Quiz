@@ -24,15 +24,18 @@ $query = sprintf("
 );
 $hasil    = $_db -> query($query);
 $question = null;
+$answer_exp = '-';
 $question_number = 0;
 $options  = null;
 $is_session_open  = false;
 $choices  = [];
+$answer_exp = null;
 
 // $i=0;
 while($row=mysqli_fetch_array($hasil,1)){
 	if(is_null($question)){
 		$question = $row['question'];
+		$answer_exp = $row['answer_exp'];
 		$question_number = $row['sort'];
 		$is_session_open = intval($row['is_open']);
 	}
@@ -141,7 +144,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 <body>
 	<div class="container">
 		<div class="question">
-			<div><b>Question number <?php echo $question_number; ?></b></div>
+			<div class="title"><b>Question number <?php echo $question_number; ?></b></div>
 			<?php echo $question; ?>
 		</div>
 
@@ -159,6 +162,12 @@ while($row=mysqli_fetch_array($hasil,1)){
 				}
 			?>
 		</div>
+
+		<!-- Explanation -->
+		<div class="question">
+			<?php echo $answer_exp; ?>
+		</div>
+
 	</div>
 
 	<div class="footer">

@@ -21,7 +21,7 @@ button{
 	box-shadow: 0px 0px 2px #112233;
 }
 
-.container .question div{
+.container .question .title{
 	padding: 10px 10px 2px 10px;
 	margin: -10px -10px 5px -10px;
 /*	background-color: khaki;*/
@@ -75,9 +75,10 @@ button{
 table.standings{
 	border-collapse: collapse;
 }
-table.standings td{
+table.standings td, table.standings th{
 	padding: 5px;
-	border: solid 2px olive;
+	min-width: 20px;
+/*	border: solid 2px olive;*/
 }
 table.standings td .ans{
 	padding: 3px;
@@ -94,6 +95,10 @@ table.standings td .ans.ansOl{
 }
 table.standings td .ans.ans-l{
 	background-color: #aaa;
+}
+table.standings .rank.r1{
+	background-color: #ffffcc;
+/*	border: solid gold;*/
 }
 
 

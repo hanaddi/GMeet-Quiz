@@ -46,6 +46,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 
 	echo "<td>";
 	echo "<button onclick=\"closeSession({$row['id']})\">close</button>";
+	echo "<button onclick=\"setQuestionRoute({$row['id']})\">set route</button>";
 	echo "</td>";
 
 	echo "</tr>";
@@ -161,5 +162,8 @@ function setSlide(file='question.php'){
 	window.location=window.location;
 }
 
-window.localStorage.setItem(ls_questions, JSON.stringify(<?php echo json_encode($q_order);?>));
+function setQuestionRoute(){
+	window.localStorage.setItem(ls_questions, JSON.stringify(<?php echo json_encode($q_order);?>));
+}
+setQuestionRoute();
 </script>

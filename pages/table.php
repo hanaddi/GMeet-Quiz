@@ -18,7 +18,7 @@ $query = sprintf("
 		on K.id = A.id_quiz
 	where  A.`id_session` = '%s'
 	and A.`id_quiz` = '%s'
-	order by Q.sort
+	order by Q.sort desc
 	", _norm($id_session), _norm($id_quiz),
 );
 $hasil    = $_db -> query($query);
@@ -64,7 +64,7 @@ array_multisort(array_column($participants,"points"),SORT_DESC, $participants);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Quiz <?php echo $question_number; ?></title>
+	<title>Standings</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js"></script>
 	<script>
@@ -73,37 +73,44 @@ array_multisort(array_column($participants,"points"),SORT_DESC, $participants);
 </head>
 <body>
 	<div class="container">
-		<table border="1" class="standings">
-			<?php
-			$i = 0;
-			$prevp = -1;
-			echo "<tr>";
-			echo "<th>#</th>";
-			echo "<th>Name</th>";
-			echo "<th>Points</th>";
-			foreach ($numbers as $n) {
-				echo "<th>{$n}</th>";
-			}
-			echo "</tr>";
 
+		<div class="question">
+			<div class="title"><b>Standings</b></div>
 
-			foreach ($participants as $p) {
-				if($p['points'] != $prevp){
-					$prevp = $p['points'];
-					$i++;
-				}
+			<div style="overflow-x: scroll;">
+			<table border="1" class="standings">
+				<?php
+				$i = 0;
+				$prevp = -1;
 				echo "<tr>";
-				echo "<td>{$i}</td>";
-				echo "<td>{$p['name']}</td>";
-				echo "<td>{$p['points']}</td>";
+				echo "<th>#</th>";
+				echo "<th>Name</th>";
+				echo "<th>Points</th>";
 				foreach ($numbers as $n) {
-					echo "<td><div class=\"ans ans{$p['numbers'][$n]}l\">{$p['numbers'][$n]}</div></td>";
+					echo "<th>{$n}</th>";
 				}
 				echo "</tr>";
-			}
 
-			?>
-		</table>
+
+				foreach ($participants as $p) {
+					if($p['points'] != $prevp){
+						$prevp = $p['points'];
+						$i++;
+					}
+					echo "<tr class=\"rank r{$i}\">";
+					echo "<td>{$i}</td>";
+					echo "<td>{$p['name']}</td>";
+					echo "<td>{$p['points']}</td>";
+					foreach ($numbers as $n) {
+						echo "<td><div class=\"ans ans{$p['numbers'][$n]}l\">{$p['numbers'][$n]}</div></td>";
+					}
+					echo "</tr>";
+				}
+
+				?>
+			</table>
+			</div>
+		</div>
 	</div>
 
 	<div class="footerprep"></div>

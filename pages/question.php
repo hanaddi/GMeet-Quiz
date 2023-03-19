@@ -131,7 +131,7 @@ while($row=mysqli_fetch_array($hasil,1)){
 <body>
 	<div class="container">
 		<div class="question">
-			<div><b>Question number <?php echo $question_number; ?></b></div>
+			<div class="title"><b>Question number <?php echo $question_number; ?></b></div>
 			<?php echo $question; ?>
 		</div>
 
