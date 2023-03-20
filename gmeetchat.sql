@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 19, 2023 at 09:39 PM
+-- Generation Time: Mar 20, 2023 at 07:57 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -119,7 +119,8 @@ INSERT INTO `answer` (`id`, `id_session`, `id_quiz`, `id_question`, `person`, `i
 (153, 6, 3, 5, 'Anda 15', 22, 'O', 3, 1679234299),
 (157, 6, 3, 5, 'Anda 5', 21, 'X', 0, 1679234306),
 (159, 6, 3, 5, 'Anda 14', 22, 'O', 3, 1679234306),
-(161, 6, 3, 5, 'Anda 12', 21, 'X', 0, 1679234308);
+(161, 6, 3, 5, 'Anda 12', 21, 'X', 0, 1679234308),
+(163, 6, 3, 8, 'You', 35, 'X', 0, 1679294508);
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,27 @@ INSERT INTO `choice` (`id`, `id_question`, `label`, `is_correct`) VALUES
 (29, 7, '52.2%', 0),
 (30, 7, '152.2%', 1),
 (31, 7, '261%', 0),
-(32, 7, '161%', 0);
+(32, 7, '161%', 0),
+(33, 8, 'B1.2', 1),
+(34, 8, 'C1.1', 0),
+(35, 8, 'B1.1', 0),
+(36, 8, 'None of the other answers are correct', 0),
+(37, 9, 'Unlimited', 0),
+(38, 9, '3', 0),
+(39, 9, '1', 1),
+(40, 9, '5', 0),
+(41, 10, 'Group Code is just alternative name for Learnalytics Code', 0),
+(42, 10, 'Group Code is used to group students monitored by Learnalytics Code', 1),
+(43, 10, 'Learnalytics Code is created by principal, Group Code is created by teacher', 0),
+(44, 10, 'Learnalytics Code could have the same code as Group Code', 0),
+(45, 11, '1', 0),
+(46, 11, '0', 0),
+(47, 11, '3', 0),
+(48, 11, 'More than 3', 1),
+(49, 12, 'English CEFR level', 0),
+(50, 12, 'Date of start learning', 0),
+(51, 12, 'User\'s rank on event leaderboard', 1),
+(52, 12, 'Learning progress for today', 0);
 
 -- --------------------------------------------------------
 
@@ -206,10 +227,15 @@ INSERT INTO `question` (`id`, `sort`, `id_quiz`, `question`, `answer_exp`) VALUE
 (1, 1, 1, 'pilih A', ''),
 (2, 2, 1, 'no B', ''),
 (3, 1, 3, 'DoC is one of our learning platforms. What does DoC stand for?', ''),
-(4, 2, 3, '<img src=\"imgs/professor_3.png\" style=\"float: left;\">\nHis granddaughter will help us to rebuild a city. What is her name?', '<img src=\"imgs/prof.png\" style=\"width:100%;height:auto\">'),
+(4, 2, 3, '<img src=\"imgs/prof2.png\" style=\"float: left;width:auto\">\nHis granddaughter will help us to rebuild a city. What is her name?', '<img src=\"imgs/prof.png\" style=\"width:100%;height:auto\">'),
 (5, 3, 3, '<img src=\"imgs/cparro.png\" style=\"width:80%;height:auto;margin:auto\"><br/>\nWhat is the name of this minigame?', '<ul>\n<li>Copy Parrot<br/><img src=\"imgs/cparro.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Eye Spy<br/><img src=\"imgs/eyspy.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Word Snap<br/><img src=\"imgs/wsnap.png\" style=\"width:100%;height:auto\"></li>\n\n<li>Copy Cat<br/><img src=\"imgs/ccat.png\" style=\"width:100%;height:auto\"></li>\n\n</ul>'),
-(6, 4, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the diagnostic score of this student?', 'Possible diagnostic scores:\r\n<ul>\r\n<li>Pre-A.1</li>\r\n<li>A1.1</li>\r\n<li>A2.1</li>\r\n<li>B1.1</li>\r\n<li>B2.1</li>\r\n<li>C1.1</li>\r\n</ul>'),
-(7, 5, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the learning improvements of this student?', 'Hard skills improvements:\r\n<ul>\r\n<li>Reading: 168%</li>\r\n<li>Vocabulary: 160%</li>\r\n<li>Grammar: 168%</li>\r\n<li>Listening: 151%</li>\r\n<li>Speaking: 114%</li>\r\n</ul>\r\n\r\nLearning improvements:<br/>\r\n<code>\r\n= AVERAGE(168%, 160%, 168%, 151%, 114%)<br/>\r\n= 152.2%\r\n</code>');
+(6, 8, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the diagnostic score of this student?', '<img src=\"imgs/sc2.png\" style=\"width:60%;height:auto\">\r\n<br/>\r\nPossible diagnostic scores:\r\n<ul>\r\n<li>Pre-A.1</li>\r\n<li>A1.1</li>\r\n<li>A2.1</li>\r\n<li>B1.1</li>\r\n<li>B2.1</li>\r\n<li>C1.1</li>\r\n</ul>'),
+(7, 10, 3, '<img src=\"imgs/sc1.png\" style=\"width:100%;height:auto;margin:auto\"><br/>\r\nWhat is the learning improvements of this student?', 'Hard skills improvements:\r\n<ul>\r\n<li>Reading: 168%</li>\r\n<li>Vocabulary: 160%</li>\r\n<li>Grammar: 168%</li>\r\n<li>Listening: 151%</li>\r\n<li>Speaking: 114%</li>\r\n</ul>\r\n\r\nLearning improvements:<br/>\r\n<code>\r\n= AVERAGE(168%, 160%, 168%, 151%, 114%)<br/>\r\n= 152.2%\r\n</code>'),
+(8, 9, 3, 'A student got diagnostic score A2.1. He makes 404% learning improvements. What is his current CEFR level? ', '100% learning improvements = improved 1 CEFR sub-level\n<br/>\n<img src=\"imgs/cefr1.gif\" style=\"width:80%;height:auto\">'),
+(9, 5, 3, 'What is the maximum number of Group Code an Ed user can have?', ''),
+(10, 7, 3, 'Which is the most correct statement about Learnalytics Code and Group Code?', '<img src=\"imgs/lavenn.gif\" style=\"width:50%;height:auto\">\n<br/>\n\n<img src=\"imgs/la1.png\" style=\"width:40%;height:auto\">\n<img src=\"imgs/la2.png\" style=\"width:40%;height:auto\">'),
+(11, 4, 3, 'What is the maximum number of Learnalytics Code an DoC user can have?', '<img src=\"imgs/docla.png\" style=\"width:90%;height:auto\">'),
+(12, 6, 3, '[Ed the Learning Bot] Which data/information is not shown in the <code>/profile</code> command?', '<img src=\"imgs/profile.png\" style=\"width:90%;height:auto\">');
 
 -- --------------------------------------------------------
 
@@ -257,7 +283,7 @@ INSERT INTO `session` (`id`, `id_quiz`, `id_question`, `is_open`, `choices`) VAL
 (1, 1, 1, 0, '{\"D\":{\"label\":\"D\",\"desc\":\"A haha\",\"id_choice\":\"5\",\"is_correct\":\"1\"},\"A\":{\"label\":\"A\",\"desc\":\"B bebek\",\"id_choice\":\"6\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"C cius\",\"id_choice\":\"7\",\"is_correct\":\"0\"},\"C\":{\"label\":\"C\",\"desc\":\"D dih\",\"id_choice\":\"8\",\"is_correct\":\"0\"}}'),
 (3, 1, 2, 0, '{\"B\":{\"label\":\"B\",\"desc\":\"cxzc B\",\"id_choice\":\"9\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"x 324 \",\"id_choice\":\"10\",\"is_correct\":\"0\"},\"A\":{\"label\":\"A\",\"desc\":\"dsfd5 ew\",\"id_choice\":\"11\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"sdf df5 \",\"id_choice\":\"12\",\"is_correct\":\"0\"}}'),
 (5, 2, NULL, 0, ''),
-(6, 3, 7, 0, '{\"A\":{\"label\":\"A\",\"desc\":\"52.2%\",\"id_choice\":\"29\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"152.2%\",\"id_choice\":\"30\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"261%\",\"id_choice\":\"31\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"161%\",\"id_choice\":\"32\",\"is_correct\":\"0\"}}'),
+(6, 3, 7, 0, '{\"B\":{\"label\":\"B\",\"desc\":\"52.2%\",\"id_choice\":\"29\",\"is_correct\":\"0\"},\"D\":{\"label\":\"D\",\"desc\":\"152.2%\",\"id_choice\":\"30\",\"is_correct\":\"1\"},\"C\":{\"label\":\"C\",\"desc\":\"261%\",\"id_choice\":\"31\",\"is_correct\":\"0\"},\"A\":{\"label\":\"A\",\"desc\":\"161%\",\"id_choice\":\"32\",\"is_correct\":\"0\"}}'),
 (7, 3, 5, 0, '{\"D\":{\"label\":\"D\",\"desc\":\"Copy Cat\",\"id_choice\":\"21\",\"is_correct\":\"0\"},\"C\":{\"label\":\"C\",\"desc\":\"Copy Parrot\",\"id_choice\":\"22\",\"is_correct\":\"1\"},\"A\":{\"label\":\"A\",\"desc\":\"Word Snap\",\"id_choice\":\"23\",\"is_correct\":\"0\"},\"B\":{\"label\":\"B\",\"desc\":\"Eye Spy\",\"id_choice\":\"24\",\"is_correct\":\"0\"}}');
 
 --
@@ -320,7 +346,7 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `chat_log`
@@ -332,13 +358,13 @@ ALTER TABLE `chat_log`
 -- AUTO_INCREMENT for table `choice`
 --
 ALTER TABLE `choice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `quiz`
