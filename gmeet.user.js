@@ -14,6 +14,8 @@
 (function() {
     'use strict';
 
+    const baseURL = "http://localhost:8880/gmeetchat";
+
     var initLang = (lang) =>{
     	let o = {};
     	o.l = lang;
@@ -159,14 +161,6 @@
 			try{
                 let time = nodeTitle.dataset.timestamp/(1000*60*60*24)|0;
                 let id = `${nodeTitle.dataset.timestamp}_${index}_${nodeTitle.dataset.senderName}`;
-				//let i = new Image();
-				//i.src = `http://localhost:8880/logger/log.php?fname=chat.${time}.log&text=${nodeTitle.dataset.timestamp}+${nodeTitle.dataset.senderName}+${text}`;
-
-				//window.fetch(`http://localhost:8880/logger/log.php?id=${id}&fname=chat.${time}.log&text=${nodeTitle.dataset.timestamp}+${encodeURIComponent(nodeTitle.dataset.senderName)}+${encodeURIComponent(text)}`,{
-                //    headers:{
-                //        //"X-Ini-Asli": "iya"
-                //    }
-                //});
 
                 //generate label
                 let a=new Date();
@@ -174,11 +168,10 @@
                 let random = "";
                 // random = " " + (Math.random()*30|0);
 
-				window.fetch(`http://localhost:8880/gmeetchat/submit.php`,{
+				window.fetch(`${baseURL}/submit.php`,{
                     method: 'POST',
                     headers:{
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        //"X-Ini-Asli": "iya"
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: `label=${label}&ref=${id}&time=${nodeTitle.dataset.timestamp}&name=${encodeURIComponent(nodeTitle.dataset.senderName+random)}&content=${encodeURIComponent(text)}`
                 });
@@ -205,7 +198,7 @@
 		searchParams.set('key', key)
 		searchParams.set('value', value)
 		let search = '?'+searchParams.toString()
-		let url = 'http://localhost:8880/gmeetchat/firelsevent.php' + search;
+		let url = baseURL + '/firelsevent.php' + search;
 		iframeShooter.src = url;
 	}
 })();
